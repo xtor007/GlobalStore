@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import SnapKit
 
 final class MainViewController<DatabaseType: DBManager>: UIViewController {
-    
     private let dataStorage: MainViewControllerDataStorage<DatabaseType>
+    
+    // MARK: - Subviews
+    
+    private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.text = Texts.noData
+        label.font = .systemFont(ofSize: 17)
+        label.textColor = UIColor(resource: .grayForeground)
+        return label
+    }()
     
     // MARK: - Life
     
@@ -24,7 +34,26 @@ final class MainViewController<DatabaseType: DBManager>: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        makeUI()
     }
+}
 
+// MARK: - UI
+
+extension MainViewController {
+    private func makeUI() {
+        setupBackground()
+        setupNoDataLabel()
+    }
+    
+    private func setupBackground() {
+        view.backgroundColor = UIColor(resource: .background)
+    }
+    
+    private func setupNoDataLabel() {
+        view.addSubview(noDataLabel)
+        noDataLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
 }
