@@ -13,10 +13,22 @@
 		FFB91B302C11D5D80088762D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB91B2F2C11D5D80088762D /* Base */; };
 		FFB91B3E2C11D77C0088762D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B3D2C11D77C0088762D /* SnapKit */; };
 		FFB91B402C11D77C0088762D /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B3F2C11D77C0088762D /* SnapKit-Dynamic */; };
-		FFB91B442C11DBF00088762D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B432C11DBF00088762D /* Realm */; };
-		FFB91B462C11DBF00088762D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B452C11DBF00088762D /* RealmSwift */; };
 		FFB91B482C11EE580088762D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B472C11EE580088762D /* MainViewController.swift */; };
+		FFB91B4B2C11EF050088762D /* MainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B4A2C11EF050088762D /* MainViewControllerFactory.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FFB91B4D2C11F2350088762D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FFB91B202C11D5D60088762D /* GlobalStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +38,7 @@
 		FFB91B2F2C11D5D80088762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFB91B312C11D5D80088762D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFB91B472C11EE580088762D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FFB91B4A2C11EF050088762D /* MainViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,8 +46,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB91B462C11DBF00088762D /* RealmSwift in Frameworks */,
-				FFB91B442C11DBF00088762D /* Realm in Frameworks */,
 				FFB91B3E2C11D77C0088762D /* SnapKit in Frameworks */,
 				FFB91B402C11D77C0088762D /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -99,6 +110,7 @@
 		FFB91B3A2C11D7540088762D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				FFB91B492C11EEEF0088762D /* Factory */,
 				FFB91B3B2C11D75B0088762D /* Controller */,
 			);
 			path = Main;
@@ -112,6 +124,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		FFB91B492C11EEEF0088762D /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B4A2C11EF050088762D /* MainViewControllerFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +142,7 @@
 				FFB91B1C2C11D5D60088762D /* Sources */,
 				FFB91B1D2C11D5D60088762D /* Frameworks */,
 				FFB91B1E2C11D5D60088762D /* Resources */,
+				FFB91B4D2C11F2350088762D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,8 +152,6 @@
 			packageProductDependencies = (
 				FFB91B3D2C11D77C0088762D /* SnapKit */,
 				FFB91B3F2C11D77C0088762D /* SnapKit-Dynamic */,
-				FFB91B432C11DBF00088762D /* Realm */,
-				FFB91B452C11DBF00088762D /* RealmSwift */,
 			);
 			productName = GlobalStore;
 			productReference = FFB91B202C11D5D60088762D /* GlobalStore.app */;
@@ -164,7 +183,6 @@
 			mainGroup = FFB91B172C11D5D60088762D;
 			packageReferences = (
 				FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */,
-				FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = FFB91B212C11D5D60088762D /* Products */;
 			projectDirPath = "";
@@ -194,6 +212,7 @@
 			files = (
 				FFB91B482C11EE580088762D /* MainViewController.swift in Sources */,
 				FFB91B242C11D5D60088762D /* AppDelegate.swift in Sources */,
+				FFB91B4B2C11EF050088762D /* MainViewControllerFactory.swift in Sources */,
 				FFB91B262C11D5D60088762D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,14 +436,6 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift/";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -437,16 +448,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
-		};
-		FFB91B432C11DBF00088762D /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		FFB91B452C11DBF00088762D /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
