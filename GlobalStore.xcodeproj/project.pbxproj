@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		FFB91B242C11D5D60088762D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B232C11D5D60088762D /* AppDelegate.swift */; };
 		FFB91B262C11D5D60088762D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B252C11D5D60088762D /* SceneDelegate.swift */; };
-		FFB91B282C11D5D60088762D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B272C11D5D60088762D /* ViewController.swift */; };
-		FFB91B2B2C11D5D60088762D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB91B2A2C11D5D60088762D /* Base */; };
 		FFB91B2D2C11D5D80088762D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB91B2C2C11D5D80088762D /* Assets.xcassets */; };
 		FFB91B302C11D5D80088762D /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FFB91B2F2C11D5D80088762D /* Base */; };
+		FFB91B3E2C11D77C0088762D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B3D2C11D77C0088762D /* SnapKit */; };
+		FFB91B402C11D77C0088762D /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B3F2C11D77C0088762D /* SnapKit-Dynamic */; };
+		FFB91B442C11DBF00088762D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B432C11DBF00088762D /* Realm */; };
+		FFB91B462C11DBF00088762D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B452C11DBF00088762D /* RealmSwift */; };
+		FFB91B482C11EE580088762D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B472C11EE580088762D /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FFB91B202C11D5D60088762D /* GlobalStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB91B232C11D5D60088762D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFB91B252C11D5D60088762D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FFB91B272C11D5D60088762D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FFB91B2A2C11D5D60088762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFB91B2C2C11D5D80088762D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFB91B2F2C11D5D80088762D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFB91B312C11D5D80088762D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFB91B472C11EE580088762D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB91B462C11DBF00088762D /* RealmSwift in Frameworks */,
+				FFB91B442C11DBF00088762D /* Realm in Frameworks */,
+				FFB91B3E2C11D77C0088762D /* SnapKit in Frameworks */,
+				FFB91B402C11D77C0088762D /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +62,54 @@
 		FFB91B222C11D5D60088762D /* GlobalStore */ = {
 			isa = PBXGroup;
 			children = (
-				FFB91B232C11D5D60088762D /* AppDelegate.swift */,
-				FFB91B252C11D5D60088762D /* SceneDelegate.swift */,
-				FFB91B272C11D5D60088762D /* ViewController.swift */,
-				FFB91B292C11D5D60088762D /* Main.storyboard */,
-				FFB91B2C2C11D5D80088762D /* Assets.xcassets */,
-				FFB91B2E2C11D5D80088762D /* LaunchScreen.storyboard */,
-				FFB91B312C11D5D80088762D /* Info.plist */,
+				FFB91B392C11D74F0088762D /* Flow */,
+				FFB91B382C11D6410088762D /* Resources */,
+				FFB91B372C11D6150088762D /* App */,
 			);
 			path = GlobalStore;
+			sourceTree = "<group>";
+		};
+		FFB91B372C11D6150088762D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B312C11D5D80088762D /* Info.plist */,
+				FFB91B2E2C11D5D80088762D /* LaunchScreen.storyboard */,
+				FFB91B252C11D5D60088762D /* SceneDelegate.swift */,
+				FFB91B232C11D5D60088762D /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FFB91B382C11D6410088762D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B2C2C11D5D80088762D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FFB91B392C11D74F0088762D /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B3A2C11D7540088762D /* Main */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		FFB91B3A2C11D7540088762D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B3B2C11D75B0088762D /* Controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FFB91B3B2C11D75B0088762D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B472C11EE580088762D /* MainViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +128,12 @@
 			dependencies = (
 			);
 			name = GlobalStore;
+			packageProductDependencies = (
+				FFB91B3D2C11D77C0088762D /* SnapKit */,
+				FFB91B3F2C11D77C0088762D /* SnapKit-Dynamic */,
+				FFB91B432C11DBF00088762D /* Realm */,
+				FFB91B452C11DBF00088762D /* RealmSwift */,
+			);
 			productName = GlobalStore;
 			productReference = FFB91B202C11D5D60088762D /* GlobalStore.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +162,10 @@
 				Base,
 			);
 			mainGroup = FFB91B172C11D5D60088762D;
+			packageReferences = (
+				FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = FFB91B212C11D5D60088762D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +182,6 @@
 			files = (
 				FFB91B2D2C11D5D80088762D /* Assets.xcassets in Resources */,
 				FFB91B302C11D5D80088762D /* Base in Resources */,
-				FFB91B2B2C11D5D60088762D /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFB91B282C11D5D60088762D /* ViewController.swift in Sources */,
+				FFB91B482C11EE580088762D /* MainViewController.swift in Sources */,
 				FFB91B242C11D5D60088762D /* AppDelegate.swift in Sources */,
 				FFB91B262C11D5D60088762D /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +201,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FFB91B292C11D5D60088762D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFB91B2A2C11D5D60088762D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FFB91B2E2C11D5D80088762D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,10 +340,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AF68Y4A9MG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GlobalStore/Info.plist;
+				INFOPLIST_FILE = GlobalStore/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,10 +367,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AF68Y4A9MG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GlobalStore/Info.plist;
+				INFOPLIST_FILE = GlobalStore/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,6 +407,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift/";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FFB91B3D2C11D77C0088762D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		FFB91B3F2C11D77C0088762D /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		FFB91B432C11DBF00088762D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		FFB91B452C11DBF00088762D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFB91B422C11DBF00088762D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FFB91B182C11D5D60088762D /* Project object */;
 }
