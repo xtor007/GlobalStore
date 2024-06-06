@@ -12,6 +12,10 @@ final class Texts {
         text(for: "noData")
     }
     
+    static var regenerate: String {
+        text(for: "regenerate")
+    }
+    
     private static func text(for key: String) -> String {
         NSLocalizedString(key, comment: "")
     }

@@ -7,16 +7,20 @@
 
 import Foundation
 
-class MainViewControllerDataStorage<DatabaseType: DBManager> {
+class MainViewControllerDataStorage {
     
-    private let dbManager: DatabaseType
+    private let dbManager: any DBManager
     
-    private var shops = [DatabaseType.ShopType]()
-    private var products = [DatabaseType.ShopType.ProductType]()
+    private var shops = [any Shop]()
+    private var products = [Product]()
     
-    init(dbManager: DatabaseType) {
+    init(dbManager: any DBManager) {
         self.dbManager = dbManager
         fetchDataFromDB()
+    }
+    
+    func regenerateData() {
+        print("1")
     }
     
 }
