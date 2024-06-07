@@ -27,6 +27,11 @@
 		FFB91B712C13244E0088762D /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B702C13244E0088762D /* ProductTableViewCell.swift */; };
 		FFB91B742C1327640088762D /* Double+rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B732C1327640088762D /* Double+rounded.swift */; };
 		FFB91B762C1328900088762D /* ProductsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B752C1328900088762D /* ProductsDataSource.swift */; };
+		FFB91B7F2C1331E50088762D /* ProductObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B7E2C1331E50088762D /* ProductObject.swift */; };
+		FFB91B812C1331FE0088762D /* ShopObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B802C1331FE0088762D /* ShopObject.swift */; };
+		FFB91B832C1332820088762D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B822C1332820088762D /* RealmManager.swift */; };
+		FFB91B852C1333E90088762D /* String+generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B842C1333E90088762D /* String+generate.swift */; };
+		FFB91B8A2C133DC60088762D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFB91B892C133DC60088762D /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +68,10 @@
 		FFB91B702C13244E0088762D /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		FFB91B732C1327640088762D /* Double+rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+rounded.swift"; sourceTree = "<group>"; };
 		FFB91B752C1328900088762D /* ProductsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataSource.swift; sourceTree = "<group>"; };
+		FFB91B7E2C1331E50088762D /* ProductObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductObject.swift; sourceTree = "<group>"; };
+		FFB91B802C1331FE0088762D /* ShopObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopObject.swift; sourceTree = "<group>"; };
+		FFB91B822C1332820088762D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		FFB91B842C1333E90088762D /* String+generate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+generate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB91B8A2C133DC60088762D /* RealmSwift in Frameworks */,
 				FFB91B3E2C11D77C0088762D /* SnapKit in Frameworks */,
 				FFB91B402C11D77C0088762D /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -175,6 +185,7 @@
 		FFB91B522C11F4A10088762D /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				FFB91B7C2C1331D20088762D /* Realm */,
 				FFB91B552C11F4DA0088762D /* Model */,
 				FFB91B532C11F4B50088762D /* DBManager.swift */,
 			);
@@ -244,8 +255,27 @@
 			isa = PBXGroup;
 			children = (
 				FFB91B732C1327640088762D /* Double+rounded.swift */,
+				FFB91B842C1333E90088762D /* String+generate.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		FFB91B7C2C1331D20088762D /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B7D2C1331D90088762D /* Model */,
+				FFB91B822C1332820088762D /* RealmManager.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		FFB91B7D2C1331D90088762D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B7E2C1331E50088762D /* ProductObject.swift */,
+				FFB91B802C1331FE0088762D /* ShopObject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +298,7 @@
 			packageProductDependencies = (
 				FFB91B3D2C11D77C0088762D /* SnapKit */,
 				FFB91B3F2C11D77C0088762D /* SnapKit-Dynamic */,
+				FFB91B892C133DC60088762D /* RealmSwift */,
 			);
 			productName = GlobalStore;
 			productReference = FFB91B202C11D5D60088762D /* GlobalStore.app */;
@@ -299,6 +330,7 @@
 			mainGroup = FFB91B172C11D5D60088762D;
 			packageReferences = (
 				FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				FFB91B862C133DC60088762D /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = FFB91B212C11D5D60088762D /* Products */;
 			projectDirPath = "";
@@ -332,10 +364,14 @@
 				FFB91B762C1328900088762D /* ProductsDataSource.swift in Sources */,
 				FFB91B6B2C1310FE0088762D /* FilterDataSource.swift in Sources */,
 				FFB91B482C11EE580088762D /* MainViewController.swift in Sources */,
+				FFB91B832C1332820088762D /* RealmManager.swift in Sources */,
+				FFB91B812C1331FE0088762D /* ShopObject.swift in Sources */,
 				FFB91B242C11D5D60088762D /* AppDelegate.swift in Sources */,
+				FFB91B7F2C1331E50088762D /* ProductObject.swift in Sources */,
 				FFB91B682C130C380088762D /* FilterCollectionViewCell.swift in Sources */,
 				FFB91B742C1327640088762D /* Double+rounded.swift in Sources */,
 				FFB91B612C120F370088762D /* Texts.swift in Sources */,
+				FFB91B852C1333E90088762D /* String+generate.swift in Sources */,
 				FFB91B712C13244E0088762D /* ProductTableViewCell.swift in Sources */,
 				FFB91B5C2C11F7130088762D /* MainViewControllerDataStorage.swift in Sources */,
 				FFB91B572C11F4EF0088762D /* Shop.swift in Sources */,
@@ -572,6 +608,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		FFB91B862C133DC60088762D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 10.51.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -584,6 +628,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FFB91B3C2C11D77C0088762D /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		FFB91B892C133DC60088762D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFB91B862C133DC60088762D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

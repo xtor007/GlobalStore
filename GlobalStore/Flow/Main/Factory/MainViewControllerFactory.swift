@@ -9,7 +9,7 @@ import UIKit
 
 final class MainViewControllerFactory {
     func makeMainViewController() -> UIViewController {
-        let storage = MainViewControllerDataStorage(dbManager: SimpleDB())
+        let storage = MainViewControllerDataStorage(dbManager: RealmManager.shared)
         let mainVC = MainViewController(dataStorage: storage)
         return mainVC
     }
