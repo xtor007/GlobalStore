@@ -24,6 +24,9 @@
 		FFB91B682C130C380088762D /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B672C130C380088762D /* FilterCollectionViewCell.swift */; };
 		FFB91B6B2C1310FE0088762D /* FilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B6A2C1310FE0088762D /* FilterDataSource.swift */; };
 		FFB91B6E2C1312480088762D /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B6D2C1312480088762D /* Filter.swift */; };
+		FFB91B712C13244E0088762D /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B702C13244E0088762D /* ProductTableViewCell.swift */; };
+		FFB91B742C1327640088762D /* Double+rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B732C1327640088762D /* Double+rounded.swift */; };
+		FFB91B762C1328900088762D /* ProductsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B752C1328900088762D /* ProductsDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +60,9 @@
 		FFB91B672C130C380088762D /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFB91B6A2C1310FE0088762D /* FilterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataSource.swift; sourceTree = "<group>"; };
 		FFB91B6D2C1312480088762D /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		FFB91B702C13244E0088762D /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		FFB91B732C1327640088762D /* Double+rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+rounded.swift"; sourceTree = "<group>"; };
+		FFB91B752C1328900088762D /* ProductsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 		FFB91B222C11D5D60088762D /* GlobalStore */ = {
 			isa = PBXGroup;
 			children = (
+				FFB91B722C1327530088762D /* Extension */,
 				FFB91B512C11F4990088762D /* Manager */,
 				FFB91B392C11D74F0088762D /* Flow */,
 				FFB91B382C11D6410088762D /* Resources */,
@@ -194,6 +201,7 @@
 		FFB91B622C130B760088762D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FFB91B6F2C1324350088762D /* TableCell */,
 				FFB91B632C130B810088762D /* CollectionCell */,
 			);
 			path = View;
@@ -211,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				FFB91B6A2C1310FE0088762D /* FilterDataSource.swift */,
+				FFB91B752C1328900088762D /* ProductsDataSource.swift */,
 			);
 			path = Datasource;
 			sourceTree = "<group>";
@@ -221,6 +230,22 @@
 				FFB91B6D2C1312480088762D /* Filter.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FFB91B6F2C1324350088762D /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B702C13244E0088762D /* ProductTableViewCell.swift */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		FFB91B722C1327530088762D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B732C1327640088762D /* Double+rounded.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,11 +329,14 @@
 			files = (
 				FFB91B542C11F4B50088762D /* DBManager.swift in Sources */,
 				FFB91B6E2C1312480088762D /* Filter.swift in Sources */,
+				FFB91B762C1328900088762D /* ProductsDataSource.swift in Sources */,
 				FFB91B6B2C1310FE0088762D /* FilterDataSource.swift in Sources */,
 				FFB91B482C11EE580088762D /* MainViewController.swift in Sources */,
 				FFB91B242C11D5D60088762D /* AppDelegate.swift in Sources */,
 				FFB91B682C130C380088762D /* FilterCollectionViewCell.swift in Sources */,
+				FFB91B742C1327640088762D /* Double+rounded.swift in Sources */,
 				FFB91B612C120F370088762D /* Texts.swift in Sources */,
+				FFB91B712C13244E0088762D /* ProductTableViewCell.swift in Sources */,
 				FFB91B5C2C11F7130088762D /* MainViewControllerDataStorage.swift in Sources */,
 				FFB91B572C11F4EF0088762D /* Shop.swift in Sources */,
 				FFB91B4B2C11EF050088762D /* MainViewControllerFactory.swift in Sources */,

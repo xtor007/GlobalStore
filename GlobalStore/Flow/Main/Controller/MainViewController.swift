@@ -12,6 +12,7 @@ import Combine
 final class MainViewController: UIViewController {
     private let dataStorage: MainViewControllerDataStorage
     private let filterDataSource: FilterDataSource
+    private let productDataSource: ProductsDataSource
     
     // MARK: - Subviews
     
@@ -47,6 +48,12 @@ final class MainViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var productsTable: UITableView = {
+        let table = UITableView()
+        table.backgroundColor = .clear
+        return table
+    }()
+    
     // MARK: - Cancelable
     
     private var shopsCancellable: AnyCancellable?
@@ -58,6 +65,7 @@ final class MainViewController: UIViewController {
     init(dataStorage: MainViewControllerDataStorage) {
         self.dataStorage = dataStorage
         filterDataSource = FilterDataSource(storage: dataStorage)
+        productDataSource = ProductsDataSource(storage: dataStorage)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -94,8 +102,9 @@ extension MainViewController {
         setupBackground()
         setupRegenerateButton()
         setupNoDataLabel()
-        setupActivityIndicator()
         setupFilters()
+        setupProducts()
+        setupActivityIndicator()
         updateUI()
     }
     
@@ -140,6 +149,17 @@ extension MainViewController {
         filterCollection.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.cellId)
     }
     
+    private func setupProducts() {
+        view.addSubview(productsTable)
+        productsTable.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(filterCollection.snp.bottom).offset(Constants.verticalSpacing)
+        }
+        productsTable.dataSource = productDataSource
+        productsTable.delegate = self
+        productsTable.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.cellId)
+    }
+    
     private func updateUI() {
         changeCategoriesVisibilityIfNeeded(dataStorage.shops.isEmpty)
         changeTableVisibilityIfNeeded(dataStorage.productsToShow.isEmpty)
@@ -172,6 +192,10 @@ extension MainViewController {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             noDataLabel.isHidden = !isEmpty
+            productsTable.isHidden = isEmpty
+            if !isEmpty {
+                productsTable.reloadData()
+            }
         }
     }
 }
@@ -202,6 +226,14 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - Table
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        Constants.tableCellHeight
+    }
+}
+
 // MARK: - Constants
 
 fileprivate enum Constants {
@@ -215,4 +247,6 @@ fileprivate enum Constants {
     
     static let collectionCellHeight: CGFloat = 30
     static let collectionCellWidth: CGFloat = 100
+    
+    static let tableCellHeight: CGFloat = 50
 }
