@@ -68,7 +68,10 @@ extension MainViewControllerDataStorage {
         case .all:
             productsToShow = products
         case .shop(let index):
-            productsToShow = shops[index].products
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                productsToShow = shops[index].products
+            }
         }
     }
 }
