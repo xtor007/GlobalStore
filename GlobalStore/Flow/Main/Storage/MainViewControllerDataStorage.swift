@@ -7,12 +7,14 @@
 
 import Foundation
 
-class MainViewControllerDataStorage {
+class MainViewControllerDataStorage: ObservableObject {
     
     private let dbManager: any DBManager
     
-    private var shops = [any Shop]()
+    @Published private(set) var shops = [any Shop]()
     private var products = [Product]()
+    
+    @Published private(set) var productsToShow = [Product]()
     
     init(dbManager: any DBManager) {
         self.dbManager = dbManager
@@ -20,7 +22,17 @@ class MainViewControllerDataStorage {
     }
     
     func regenerateData() {
-        print("1")
+        Task {
+            do {
+                try await dbManager.regenerateDatabase(
+                    productsCount: Constants.productsCount,
+                    shopsCount: Constants.shopsCount
+                )
+                fetchDataFromDB()
+            } catch {
+                print(error)
+            }
+        }
     }
     
 }
@@ -33,17 +45,21 @@ extension MainViewControllerDataStorage {
             do {
                 shops = try await dbManager.getShops()
                 products = try await dbManager.getProducts()
-                refreshUI()
+                updateProducts()
             } catch {
                 print(error)
             }
         }
     }
     
-    private func refreshUI() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            
-        }
+    private func updateProducts() {
+        productsToShow = products
     }
+}
+
+// MARK: - Constants
+
+fileprivate enum Constants {
+    static let productsCount = 100000
+    static let shopsCount = 10
 }

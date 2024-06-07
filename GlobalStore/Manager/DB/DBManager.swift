@@ -12,5 +12,5 @@ protocol DBManager: AnyObject {
     
     func getShops() async throws -> [ShopType]
     func getProducts() async throws -> [ShopType.ProductType]
-    func regenerateDatabase(productsCount: Int) async throws
+    func regenerateDatabase(productsCount: Int, shopsCount: Int) async throws
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 final class MainViewController: UIViewController {
     private let dataStorage: MainViewControllerDataStorage
@@ -30,6 +31,11 @@ final class MainViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Cancelable
+    
+    private var shopsCancellable: AnyCancellable?
+    private var productsCancellable: AnyCancellable?
+    
     // MARK: - Life
     
     init(dataStorage: MainViewControllerDataStorage) {
@@ -44,6 +50,18 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeUI()
+        subscribeForChangingStorage()
+    }
+    
+    private func subscribeForChangingStorage() {
+        shopsCancellable = dataStorage.$shops.sink { [weak self] _ in
+            guard let self else { return }
+            changeCategoriesVisibilityIfNeeded()
+        }
+        productsCancellable = dataStorage.$productsToShow.sink { [weak self] _ in
+            guard let self else { return }
+            changeTableVisibilityIfNeeded()
+        }
     }
 }
 
@@ -54,6 +72,7 @@ extension MainViewController {
         setupBackground()
         setupRegenerateButton()
         setupNoDataLabel()
+        updateUI()
     }
     
     private func setupBackground() {
@@ -74,6 +93,33 @@ extension MainViewController {
         view.addSubview(noDataLabel)
         noDataLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
+        }
+    }
+    
+    private func updateUI() {
+        changeCategoriesVisibilityIfNeeded()
+        changeTableVisibilityIfNeeded()
+    }
+    
+    private func changeCategoriesVisibilityIfNeeded() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            if dataStorage.shops.isEmpty {
+                
+            } else {
+                
+            }
+        }
+    }
+    
+    private func changeTableVisibilityIfNeeded() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            if dataStorage.productsToShow.isEmpty {
+                noDataLabel.isHidden = false
+            } else {
+                noDataLabel.isHidden = true
+            }
         }
     }
 }
