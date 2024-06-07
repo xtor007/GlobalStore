@@ -11,6 +11,7 @@ import Combine
 
 final class MainViewController: UIViewController {
     private let dataStorage: MainViewControllerDataStorage
+    private let filterDataSource: FilterDataSource
     
     // MARK: - Subviews
     
@@ -38,6 +39,14 @@ final class MainViewController: UIViewController {
         return indicator
     }()
     
+    private lazy var filterCollection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+    
     // MARK: - Cancelable
     
     private var shopsCancellable: AnyCancellable?
@@ -48,6 +57,7 @@ final class MainViewController: UIViewController {
     
     init(dataStorage: MainViewControllerDataStorage) {
         self.dataStorage = dataStorage
+        filterDataSource = FilterDataSource(storage: dataStorage)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,13 +72,13 @@ final class MainViewController: UIViewController {
     }
     
     private func subscribeForChangingStorage() {
-        shopsCancellable = dataStorage.$shops.sink { [weak self] _ in
+        shopsCancellable = dataStorage.$shops.sink { [weak self] shops in
             guard let self else { return }
-            changeCategoriesVisibilityIfNeeded()
+            changeCategoriesVisibilityIfNeeded(shops.isEmpty)
         }
-        productsCancellable = dataStorage.$productsToShow.sink { [weak self] _ in
+        productsCancellable = dataStorage.$productsToShow.sink { [weak self] products in
             guard let self else { return }
-            changeTableVisibilityIfNeeded()
+            changeTableVisibilityIfNeeded(products.isEmpty)
         }
         loadingCancellable = dataStorage.$isDataLoading.sink(receiveValue: { [weak self] isLoading in
             guard let self else { return }
@@ -85,6 +95,7 @@ extension MainViewController {
         setupRegenerateButton()
         setupNoDataLabel()
         setupActivityIndicator()
+        setupFilters()
         updateUI()
     }
     
@@ -116,9 +127,22 @@ extension MainViewController {
         }
     }
     
+    private func setupFilters() {
+        view.addSubview(filterCollection)
+        filterCollection.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(Constants.horizontalPadding)
+            make.trailing.equalToSuperview().offset(-Constants.horizontalPadding)
+            make.top.equalTo(regenerateButton.snp.bottom).offset(Constants.verticalSpacing)
+            make.height.equalTo(Constants.collectionCellHeight)
+        }
+        filterCollection.dataSource = filterDataSource
+        filterCollection.delegate = self
+        filterCollection.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: FilterCollectionViewCell.cellId)
+    }
+    
     private func updateUI() {
-        changeCategoriesVisibilityIfNeeded()
-        changeTableVisibilityIfNeeded()
+        changeCategoriesVisibilityIfNeeded(dataStorage.shops.isEmpty)
+        changeTableVisibilityIfNeeded(dataStorage.productsToShow.isEmpty)
     }
     
     private func changeActivtyIndicatorVisibility(_ isLoading: Bool) {
@@ -134,25 +158,20 @@ extension MainViewController {
         }
     }
     
-    private func changeCategoriesVisibilityIfNeeded() {
+    private func changeCategoriesVisibilityIfNeeded(_ isEmpty: Bool) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            if dataStorage.shops.isEmpty {
-                
-            } else {
-                
+            filterCollection.isHidden = isEmpty
+            if !isEmpty {
+                filterCollection.reloadData()
             }
         }
     }
     
-    private func changeTableVisibilityIfNeeded() {
+    private func changeTableVisibilityIfNeeded(_ isEmpty: Bool) {
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
-            if dataStorage.productsToShow.isEmpty {
-                noDataLabel.isHidden = false
-            } else {
-                noDataLabel.isHidden = true
-            }
+            noDataLabel.isHidden = !isEmpty
         }
     }
 }
@@ -166,6 +185,23 @@ extension MainViewController {
     }
 }
 
+// MARK: - Collection
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: Constants.collectionCellWidth, height: Constants.collectionCellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            dataStorage.filter = .all
+        } else {
+            dataStorage.filter = .shop(indexPath.row - 1)
+        }
+        filterCollection.reloadData()
+    }
+}
+
 // MARK: - Constants
 
 fileprivate enum Constants {
@@ -173,4 +209,10 @@ fileprivate enum Constants {
     static let buttonTrailingPadding: CGFloat = 16
     static let buttonWidth: CGFloat = 100
     static let buttonHeight: CGFloat = 20
+    
+    static let verticalSpacing: CGFloat = 16
+    static let horizontalPadding: CGFloat = 16
+    
+    static let collectionCellHeight: CGFloat = 30
+    static let collectionCellWidth: CGFloat = 100
 }

@@ -18,6 +18,12 @@ class MainViewControllerDataStorage: ObservableObject {
     
     @Published private(set) var isDataLoading = false
     
+    var filter = Filter.all {
+        didSet {
+            updateProducts()
+        }
+    }
+    
     init(dbManager: any DBManager) {
         self.dbManager = dbManager
         fetchDataFromDB()
@@ -58,7 +64,12 @@ extension MainViewControllerDataStorage {
     }
     
     private func updateProducts() {
-        productsToShow = products
+        switch filter {
+        case .all:
+            productsToShow = products
+        case .shop(let index):
+            productsToShow = shops[index].products
+        }
     }
 }
 

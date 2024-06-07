@@ -21,6 +21,9 @@
 		FFB91B5C2C11F7130088762D /* MainViewControllerDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B5B2C11F7130088762D /* MainViewControllerDataStorage.swift */; };
 		FFB91B5F2C120F010088762D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFB91B5D2C120F010088762D /* Localizable.strings */; };
 		FFB91B612C120F370088762D /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B602C120F370088762D /* Texts.swift */; };
+		FFB91B682C130C380088762D /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B672C130C380088762D /* FilterCollectionViewCell.swift */; };
+		FFB91B6B2C1310FE0088762D /* FilterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B6A2C1310FE0088762D /* FilterDataSource.swift */; };
+		FFB91B6E2C1312480088762D /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB91B6D2C1312480088762D /* Filter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +54,9 @@
 		FFB91B5B2C11F7130088762D /* MainViewControllerDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerDataStorage.swift; sourceTree = "<group>"; };
 		FFB91B5E2C120F010088762D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FFB91B602C120F370088762D /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
+		FFB91B672C130C380088762D /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		FFB91B6A2C1310FE0088762D /* FilterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataSource.swift; sourceTree = "<group>"; };
+		FFB91B6D2C1312480088762D /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,9 @@
 		FFB91B3A2C11D7540088762D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				FFB91B6C2C13123C0088762D /* Model */,
+				FFB91B692C1310EA0088762D /* Datasource */,
+				FFB91B622C130B760088762D /* View */,
 				FFB91B5A2C11F6E90088762D /* Storage */,
 				FFB91B492C11EEEF0088762D /* Factory */,
 				FFB91B3B2C11D75B0088762D /* Controller */,
@@ -180,6 +189,38 @@
 				FFB91B5B2C11F7130088762D /* MainViewControllerDataStorage.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		FFB91B622C130B760088762D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B632C130B810088762D /* CollectionCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFB91B632C130B810088762D /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B672C130C380088762D /* FilterCollectionViewCell.swift */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		FFB91B692C1310EA0088762D /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B6A2C1310FE0088762D /* FilterDataSource.swift */,
+			);
+			path = Datasource;
+			sourceTree = "<group>";
+		};
+		FFB91B6C2C13123C0088762D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFB91B6D2C1312480088762D /* Filter.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +303,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB91B542C11F4B50088762D /* DBManager.swift in Sources */,
+				FFB91B6E2C1312480088762D /* Filter.swift in Sources */,
+				FFB91B6B2C1310FE0088762D /* FilterDataSource.swift in Sources */,
 				FFB91B482C11EE580088762D /* MainViewController.swift in Sources */,
 				FFB91B242C11D5D60088762D /* AppDelegate.swift in Sources */,
+				FFB91B682C130C380088762D /* FilterCollectionViewCell.swift in Sources */,
 				FFB91B612C120F370088762D /* Texts.swift in Sources */,
 				FFB91B5C2C11F7130088762D /* MainViewControllerDataStorage.swift in Sources */,
 				FFB91B572C11F4EF0088762D /* Shop.swift in Sources */,

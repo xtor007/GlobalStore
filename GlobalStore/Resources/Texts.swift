@@ -16,6 +16,10 @@ final class Texts {
         text(for: "regenerate")
     }
     
+    static var all: String {
+        text(for: "all")
+    }
+    
     private static func text(for key: String) -> String {
         NSLocalizedString(key, comment: "")
     }
