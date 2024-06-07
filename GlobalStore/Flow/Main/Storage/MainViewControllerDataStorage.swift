@@ -16,12 +16,15 @@ class MainViewControllerDataStorage: ObservableObject {
     
     @Published private(set) var productsToShow = [Product]()
     
+    @Published private(set) var isDataLoading = false
+    
     init(dbManager: any DBManager) {
         self.dbManager = dbManager
         fetchDataFromDB()
     }
     
     func regenerateData() {
+        isDataLoading = true
         Task {
             do {
                 try await dbManager.regenerateDatabase(
@@ -29,8 +32,10 @@ class MainViewControllerDataStorage: ObservableObject {
                     shopsCount: Constants.shopsCount
                 )
                 fetchDataFromDB()
+                isDataLoading = false
             } catch {
                 print(error)
+                isDataLoading = false
             }
         }
     }

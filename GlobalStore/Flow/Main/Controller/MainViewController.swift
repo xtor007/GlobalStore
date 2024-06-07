@@ -31,10 +31,18 @@ final class MainViewController: UIViewController {
         return button
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.startAnimating()
+        indicator.isHidden = true
+        return indicator
+    }()
+    
     // MARK: - Cancelable
     
     private var shopsCancellable: AnyCancellable?
     private var productsCancellable: AnyCancellable?
+    private var loadingCancellable: AnyCancellable?
     
     // MARK: - Life
     
@@ -62,6 +70,10 @@ final class MainViewController: UIViewController {
             guard let self else { return }
             changeTableVisibilityIfNeeded()
         }
+        loadingCancellable = dataStorage.$isDataLoading.sink(receiveValue: { [weak self] isLoading in
+            guard let self else { return }
+            changeActivtyIndicatorVisibility(isLoading)
+        })
     }
 }
 
@@ -72,6 +84,7 @@ extension MainViewController {
         setupBackground()
         setupRegenerateButton()
         setupNoDataLabel()
+        setupActivityIndicator()
         updateUI()
     }
     
@@ -96,9 +109,29 @@ extension MainViewController {
         }
     }
     
+    private func setupActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
     private func updateUI() {
         changeCategoriesVisibilityIfNeeded()
         changeTableVisibilityIfNeeded()
+    }
+    
+    private func changeActivtyIndicatorVisibility(_ isLoading: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            activityIndicator.isHidden = !isLoading
+            regenerateButton.isEnabled = !isLoading
+            if isLoading {
+                noDataLabel.isHidden = true
+            } else {
+                noDataLabel.isHidden = !dataStorage.productsToShow.isEmpty
+            }
+        }
     }
     
     private func changeCategoriesVisibilityIfNeeded() {
